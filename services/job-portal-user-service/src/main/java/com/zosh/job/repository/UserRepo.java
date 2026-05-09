@@ -1,0 +1,9 @@
+package com.zosh.job.repository;
+
+import com.zosh.job.modal.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepo extends JpaRepository<User, Long> {
+    User findByEmail(String email);
+    boolean existsByEmail(String email);
+}
