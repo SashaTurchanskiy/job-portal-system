@@ -12,7 +12,7 @@
     </parent>
 
 
-    <artifactId>job-portal-services</artifactId>
+    <artifactId>job-portal-service</artifactId>
     <packaging>pom</packaging>
 
     <name>job-portal-service</name>
@@ -20,6 +20,7 @@
 
     <modules>
         <module>job-portal-user-service</module>
+        <module>job-portal-company-service</module>
     </modules>
 
 </project>
