@@ -15,6 +15,7 @@ import java.util.Optional;
 public interface CompanyRepo extends JpaRepository<Company, Long> {
 
     Optional<Company> findByOwnerId(Long ownerId);
+    boolean existsByOwnerId(Long ownerId);
     boolean existsByName(String name);
     boolean existsBySlug(String slug);
     boolean existsByRegistrationNumber(String registrationNumber);
@@ -24,8 +25,8 @@ public interface CompanyRepo extends JpaRepository<Company, Long> {
             "(:companyType IS null or c.companyType=:companyType) and " +
             "(:industryType Is Null or c.industryType=:industryType) And " +
             "(:status Is Null Or c.status=:status)")
-    List<Company> findFilters(
-            @Param("companyType" CompanyType companyType,
+    List<Company> findByFilters(
+            @Param("companyType") CompanyType companyType,
             @Param("industryType")IndustryType industryType,
             @Param("status")CompanyStatus status
     );

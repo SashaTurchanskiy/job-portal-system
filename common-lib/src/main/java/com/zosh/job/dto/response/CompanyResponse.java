@@ -29,6 +29,7 @@ public class CompanyResponse {
     private String email;
     private String phone;
     private Integer foundedYear;
+    private Long ownerId;
 
     private CompanySize companySize;
     private CompanyType companyType;
