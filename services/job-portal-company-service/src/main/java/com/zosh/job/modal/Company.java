@@ -54,7 +54,7 @@ public class Company {
     private IndustryType industryType;
 
     @Enumerated(EnumType.STRING)
-    private CompanyStatus companyStatus;
+    private CompanyStatus status;
 
     @Column(unique = true)
     private String registrationNumber;
