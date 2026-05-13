@@ -8,7 +8,7 @@ spring:
 
 
   datasource:
-    url: jdbc:mysql://localhost:3306/job_portal_user?useUnicode=true&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false
+    url: jdbc:mysql://localhost:3306/job_portal_job?useUnicode=true&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false
     username: root
     password: qwer1234
 
