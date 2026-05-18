@@ -12,6 +12,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -43,10 +44,10 @@ public class JobRequest {
     private String zipCode;
 
     @DecimalMin(value = "0.0", message = "Minimum salary must be non-negative")
-    private String minSalary;
+    private BigDecimal minSalary;
 
     @DecimalMin(value = "0.0", message = "Maximum salary must be non-negative")
-    private String maxSalary;
+    private BigDecimal maxSalary;
 
     @NotNull(message = "Job type is required")
     private JobType jobType;

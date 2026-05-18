@@ -45,6 +45,9 @@ public class Job {
     @Column(nullable = false)
     private Long companyId;
 
+    @Column(nullable = false)
+    private Long employerId;
+
     //private JobCategory category;
     //private Set<JobSkill> skills;
     //private Set<JobTag> tags;
@@ -81,6 +84,8 @@ public class Job {
 
     private LocalDateTime publishedAt;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+    private LocalDateTime closedAt;
 
 
 

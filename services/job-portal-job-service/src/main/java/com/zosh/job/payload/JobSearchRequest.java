@@ -24,8 +24,8 @@ public class JobSearchRequest {
     private List<Long> tagIds;
     private Long companyId;
     private String location;
-    private BigDecimal minSalary;
-    private BigDecimal maxSalary;
+    private String minSalary;
+    private String maxSalary;
     private JobType jobType;
     private WorkMode workMode;
     private ExperienceLevel experienceLevel;

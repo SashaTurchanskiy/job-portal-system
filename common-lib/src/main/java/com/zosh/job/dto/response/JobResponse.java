@@ -26,7 +26,7 @@ public class JobResponse {
     private String responsibilities;
     private String benefits;
 
-    private CompanySummaryResponse company;
+    private CompanyResponse company;
     private Long employerId;
 
   /*  private JobCategoryResponse category;
@@ -48,7 +48,7 @@ public class JobResponse {
     private JobType jobType;
     private WorkMode workMode;
     private ExperienceLevel experienceLevel;
-    private JobStatus jobStatus;
+    private JobStatus status;
 
     //Posting details
     private Integer openings;
