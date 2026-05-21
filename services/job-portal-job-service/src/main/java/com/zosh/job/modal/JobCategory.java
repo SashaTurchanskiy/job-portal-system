@@ -40,7 +40,7 @@ public class JobCategory {
     @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<JobCategory> subCategories = new ArrayList<>();
 
-    private Boolean isActive = true;
+    private Boolean active = true;
 
     @CreationTimestamp
     @Column(updatable = false, nullable = false)
