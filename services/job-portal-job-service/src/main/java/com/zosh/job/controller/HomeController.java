@@ -1,7 +1,7 @@
 package com.zosh.job.controller;
 
 import com.zosh.job.domain.UserRole;
-import com.zosh.job.dto.ApiResponse;
+import com.zosh.job.dto.response.ApiResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

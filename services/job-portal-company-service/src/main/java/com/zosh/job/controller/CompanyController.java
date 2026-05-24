@@ -3,7 +3,7 @@ package com.zosh.job.controller;
 import com.zosh.job.domain.CompanyStatus;
 import com.zosh.job.domain.CompanyType;
 import com.zosh.job.domain.IndustryType;
-import com.zosh.job.dto.ApiResponse;
+import com.zosh.job.dto.response.ApiResponse;
 import com.zosh.job.dto.request.CompanyRequest;
 import com.zosh.job.dto.response.CompanyResponse;
 import com.zosh.job.service.CompanyService;

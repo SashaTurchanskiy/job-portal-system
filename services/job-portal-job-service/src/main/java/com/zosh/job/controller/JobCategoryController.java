@@ -1,7 +1,7 @@
 package com.zosh.job.controller;
 
-import com.zosh.job.dto.ApiResponse;
-import com.zosh.job.dto.JobCategoryResponse;
+import com.zosh.job.dto.response.ApiResponse;
+import com.zosh.job.dto.response.JobCategoryResponse;
 import com.zosh.job.payload.JobCategoryRequest;
 import com.zosh.job.service.JobCategoryService;
 import jakarta.validation.Valid;

@@ -1,4 +1,4 @@
-package com.zosh.job.dto;
+package com.zosh.job.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

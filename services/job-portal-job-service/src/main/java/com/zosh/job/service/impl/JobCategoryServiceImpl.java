@@ -1,6 +1,6 @@
 package com.zosh.job.service.impl;
 
-import com.zosh.job.dto.JobCategoryResponse;
+import com.zosh.job.dto.response.JobCategoryResponse;
 import com.zosh.job.mapper.JobCategoryMapper;
 import com.zosh.job.modal.JobCategory;
 import com.zosh.job.payload.JobCategoryRequest;

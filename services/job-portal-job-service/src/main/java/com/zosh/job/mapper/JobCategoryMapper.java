@@ -1,6 +1,6 @@
 package com.zosh.job.mapper;
 
-import com.zosh.job.dto.JobCategoryResponse;
+import com.zosh.job.dto.response.JobCategoryResponse;
 import com.zosh.job.modal.JobCategory;
 
 import java.util.List;

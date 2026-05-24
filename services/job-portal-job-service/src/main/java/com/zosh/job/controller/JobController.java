@@ -1,6 +1,6 @@
 package com.zosh.job.controller;
 
-import com.zosh.job.dto.ApiResponse;
+import com.zosh.job.dto.response.ApiResponse;
 import com.zosh.job.dto.request.JobRequest;
 import com.zosh.job.dto.response.JobResponse;
 import com.zosh.job.payload.JobSearchRequest;
