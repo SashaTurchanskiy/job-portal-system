@@ -16,9 +16,9 @@ public interface JobSkillService {
     JobSkillResponse getSkillById(Long id) throws Exception;
 
 
-    JobSkillResponse updateJobSkill(Long id, JobSkillRequest request);
+    JobSkillResponse updateJobSkill(Long id, JobSkillRequest request) throws Exception;
 
-    void deleteJobSkill(Long id);
+    void deleteJobSkill(Long id) throws Exception;
 
     Set<JobSkill> getSkillByIds(Set<Long> ids);
 }
