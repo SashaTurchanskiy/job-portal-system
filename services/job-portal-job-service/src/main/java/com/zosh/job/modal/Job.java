@@ -48,9 +48,14 @@ public class Job {
     @Column(nullable = false)
     private Long employerId;
 
-    //private JobCategory category;
-    //private Set<JobSkill> skills;
-    //private Set<JobTag> tags;
+    @ManyToOne
+    private JobCategory category;
+
+    @ManyToMany
+    private Set<JobSkill> skills;
+
+    @ManyToMany
+    private Set<JobTag> tags;
 
     @Embedded
     private JobLocation location;

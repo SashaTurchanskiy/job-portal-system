@@ -29,9 +29,9 @@ public class JobResponse {
     private CompanyResponse company;
     private Long employerId;
 
-  /*  private JobCategoryResponse category;
+    private JobCategoryResponse category;
     private Set<JobSkillResponse> skills;
-    private Set<JobTagResponse> tags;*/
+    private Set<JobTagResponse> tags;
 
     //Location
     private String city;

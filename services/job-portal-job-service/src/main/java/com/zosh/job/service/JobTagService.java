@@ -6,18 +6,21 @@ import com.zosh.job.payload.JobSkillRequest;
 import com.zosh.job.payload.JobTagRequest;
 
 import java.util.List;
+import java.util.Set;
 
 public interface JobTagService {
 
-    JobTagResponse createTag(JobSkillRequest request) throws Exception;
+    JobTagResponse createTag(JobTagRequest request) throws Exception;
 
     List<JobTagResponse> getAllTags();
 
-    JobTagResponse updateTag(Long id, JobTagRequest request);
+    JobTagResponse updateTag(Long id, JobTagRequest request) throws Exception;
 
-    JobTagResponse getTagById(Long id);
+    JobTagResponse getTagById(Long id) throws Exception;
 
-    void deleteTag(Long id);
+    void deleteTag(Long id) throws Exception;
 
-    JobTag getTagEntityById(Long id);
+    JobTag getTagEntityById(Long id) throws Exception;
+
+    Set<JobTag> getTagsByIds(Set<Long> ids);
 }

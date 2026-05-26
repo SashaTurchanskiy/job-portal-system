@@ -10,7 +10,9 @@ import com.zosh.job.service.JobTagService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -19,7 +21,7 @@ public class JobTagServiceImpl implements JobTagService {
     private final JobTagRepository jobTagRepository;
 
     @Override
-    public JobTagResponse createTag(JobSkillRequest request) throws Exception {
+    public JobTagResponse createTag(JobTagRequest request) throws Exception {
         if (jobTagRepository.existsByName(request.getName())){
             throw new Exception("Job Tag with name '" + request.getName() + "' already exists.");
         }
@@ -34,27 +36,47 @@ public class JobTagServiceImpl implements JobTagService {
 
     @Override
     public List<JobTagResponse> getAllTags() {
-        return List.of();
+        return jobTagRepository.findAll()
+                .stream()
+                .map(JobTagMapper::toTagResponse)
+                .toList();
     }
 
     @Override
-    public JobTagResponse updateTag(Long id, JobTagRequest request) {
-        return null;
+    public JobTagResponse updateTag(Long id, JobTagRequest request) throws Exception {
+        JobTag jobTag = getTagEntityById(id);
+
+        if (!jobTag.getName().equals(request.getName())
+        && jobTagRepository.existsByName(request.getName())){
+            throw new Exception("tag with name " + request.getName() + "already exists");
+        }
+
+        jobTag.setName(request.getName());
+        return JobTagMapper.toTagResponse(jobTagRepository.save(jobTag));
     }
 
     @Override
-    public JobTagResponse getTagById(Long id) {
-        return null;
+    public JobTagResponse getTagById(Long id) throws Exception {
+        JobTag jobTag = getTagEntityById(id);
+        return JobTagMapper.toTagResponse(jobTagRepository.save(jobTag));
     }
 
     @Override
-    public void deleteTag(Long id) {
-
+    public void deleteTag(Long id) throws Exception {
+        JobTag jobTag = getTagEntityById(id);
+        jobTagRepository.delete(jobTag);
     }
 
     @Override
-    public JobTag getTagEntityById(Long id) {
-        return null;
+    public JobTag getTagEntityById(Long id) throws Exception {
+        return jobTagRepository.findById(id)
+                .orElseThrow(()-> new Exception("Job tag not found with : " + id));
+    }
+
+    @Override
+    public Set<JobTag> getTagsByIds(Set<Long> ids) {
+        List<JobTag> tags = jobTagRepository.findAllById(ids);
+        return new HashSet<>();
     }
 
     private String generateUniqueSlug(String name) {
