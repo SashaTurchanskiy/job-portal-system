@@ -2,7 +2,7 @@ package com.zosh.job.dto.response;
 
 import com.zosh.job.domain.ResumeTemplate;
 import com.zosh.job.domain.ResumeVisibility;
-import com.zosh.job.dto.PersonalInfo;
+import com.zosh.job.dto.PersonalInfoResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,7 +23,7 @@ public class ResumeResponse {
     private ResumeTemplate template;
     private ResumeVisibility visibility;
     private Boolean isDefault;
-    private PersonalInfo personalInfo;
+    private PersonalInfoResponse personalInfo;
     private String summary;
     private Integer completionScore;
     private LocalDateTime createdAt;
@@ -38,8 +38,6 @@ public class ResumeResponse {
     private List<CertificationResponse> certification;
     private List<AwardResponse> awards;
     private List<LanguageResponse> langauges;*/
-
-
 
 
 }

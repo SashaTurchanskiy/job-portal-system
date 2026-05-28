@@ -40,6 +40,8 @@ public class Resume {
 
     private Boolean isDefault = false;
 
+    private Boolean isActive = true;
+
     @Embedded
     private PersonalInfo personalInfo;
 
