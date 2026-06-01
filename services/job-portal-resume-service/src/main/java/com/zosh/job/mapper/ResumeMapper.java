@@ -3,8 +3,10 @@ package com.zosh.job.mapper;
 import com.zosh.job.dto.PersonalInfoResponse;
 import com.zosh.job.dto.response.ResumeResponse;
 
+import com.zosh.job.dto.response.ResumeSkillResponse;
 import com.zosh.job.modal.PersonalInfo;
 import com.zosh.job.modal.Resume;
+import com.zosh.job.modal.ResumeSkill;
 import com.zosh.job.payload.CreateResumeRequest;
 
 public class ResumeMapper {
@@ -38,6 +40,16 @@ public class ResumeMapper {
                 .completionScore(resume.getCompletionScore())
                 .createdAt(resume.getCreatedAt())
                 .updatedAt(resume.getUpdatedAt())
+                .build();
+    }
+
+    public static ResumeSkillResponse toSkillResponse(ResumeSkill skill){
+        return ResumeSkillResponse.builder()
+                .id(skill.getId())
+                .skillName(skill.getSkillName())
+                .proficiencyLevel(skill.getProficiencyLevel())
+                .yearsOfExperience(skill.getYearsOfExperience())
+                .displayOrder(skill.getDisplayOrder())
                 .build();
     }
 
