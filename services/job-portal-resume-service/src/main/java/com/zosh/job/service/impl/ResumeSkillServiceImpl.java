@@ -39,16 +39,33 @@ public class ResumeSkillServiceImpl implements ResumeSkillService {
 
     @Override
     public List<ResumeSkillResponse> getSkills(Long resumeId) {
-        return List.of();
+        return resumeSkillRepository.findByResumeIdOrderByDisplayOrderAsc(resumeId)
+                .stream()
+                .map(ResumeMapper::toSkillResponse)
+                .toList();
     }
 
     @Override
-    public ResumeSkillResponse updateSkill(Long skillId, Long resumeId, Long candidateId, AddResumeSkillRequest request) {
-        return null;
+    public ResumeSkillResponse updateSkill(Long skillId, Long resumeId, Long candidateId, AddResumeSkillRequest request) throws Exception {
+        ResumeSkill resumeSkill = getResumeSkillEntity(skillId);
+
+        assertOwner(resumeSkill.getResume(), candidateId);
+
+        resumeSkill.setSkillName(resumeSkill.getSkillName());
+        resumeSkill.setProficiencyLevel(resumeSkill.getProficiencyLevel());
+        resumeSkill.setYearsOfExperience(resumeSkill.getYearsOfExperience());
+        resumeSkill.setDisplayOrder(resumeSkill.getDisplayOrder());
+
+        return ResumeMapper.toSkillResponse(resumeSkillRepository.save(resumeSkill));
     }
 
     @Override
-    public void deleteSkill(Long skillId, Long resumeId, Long candidateId) {
+    public void deleteSkill(Long skillId, Long resumeId, Long candidateId) throws Exception {
+        ResumeSkill resumeSkill = getResumeSkillEntity(skillId);
+
+        assertOwner(resumeSkill.getResume(), candidateId);
+
+        resumeSkillRepository.delete(resumeSkill);
     }
 
     private void assertOwner(Resume resume, Long candidateId) throws Exception {
@@ -56,5 +73,11 @@ public class ResumeSkillServiceImpl implements ResumeSkillService {
             throw new Exception("Unauthorized: Candidate does not own this resume");
         }
 
+    }
+
+    @Override
+    public ResumeSkill getResumeSkillEntity(Long skillId) throws Exception {
+        return resumeSkillRepository.findById(skillId)
+                .orElseThrow(()-> new Exception("Resume skill not found with id: " + skillId));
     }
 }

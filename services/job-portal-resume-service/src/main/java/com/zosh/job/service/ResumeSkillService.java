@@ -1,6 +1,7 @@
 package com.zosh.job.service;
 
 import com.zosh.job.dto.response.ResumeSkillResponse;
+import com.zosh.job.modal.ResumeSkill;
 import com.zosh.job.payload.AddResumeSkillRequest;
 
 import java.util.List;
@@ -11,7 +12,9 @@ public interface ResumeSkillService {
 
     List<ResumeSkillResponse> getSkills(Long resumeId);
 
-    ResumeSkillResponse updateSkill(Long skillId, Long resumeId, Long candidateId, AddResumeSkillRequest request);
+    ResumeSkillResponse updateSkill(Long skillId, Long resumeId, Long candidateId, AddResumeSkillRequest request) throws Exception;
 
-    void deleteSkill(Long skillId, Long resumeId, Long candidateId);
+    ResumeSkill getResumeSkillEntity(Long skillId) throws Exception;
+
+    void deleteSkill(Long skillId, Long resumeId, Long candidateId) throws Exception;
 }
