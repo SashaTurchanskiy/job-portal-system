@@ -12,9 +12,9 @@ public interface EducationService {
 
     List<EducationResponse> getEducations(Long resumeId);
 
-    EducationResponse updateEducation(Long educationId, Long resumeId, Long candidateId, AddEducationRequest request);
+    EducationResponse updateEducation(Long educationId, Long resumeId, Long candidateId, AddEducationRequest request) throws Exception;
 
     Education getEducationEntity(Long educationId) throws Exception;
 
-    void deleteEducation(Long educationId, Long resumeId, Long candidateId);
+    void deleteEducation(Long educationId, Long resumeId, Long candidateId) throws Exception;
 }

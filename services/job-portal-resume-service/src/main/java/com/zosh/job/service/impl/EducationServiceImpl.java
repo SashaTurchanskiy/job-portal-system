@@ -44,16 +44,38 @@ public class EducationServiceImpl implements EducationService {
 
     @Override
     public List<EducationResponse> getEducations(Long resumeId) {
-        return List.of();
+        return educationRepo.findByResumeIdOrderByDisplayOrderAsc(resumeId)
+                .stream()
+                .map(EducationMapper::toEducationResponse)
+                .toList();
     }
 
     @Override
-    public EducationResponse updateEducation(Long educationId, Long resumeId, Long candidateId, AddEducationRequest request) {
-        return null;
+    public EducationResponse updateEducation(Long educationId, Long resumeId, Long candidateId, AddEducationRequest request) throws Exception {
+        Education education = getEducationEntity(educationId);
+
+        assertOwner(education.getResume(), candidateId);
+
+        education.setInstitutionName(request.getInstitutionName());
+        education.setDegree(request.getDegree());
+        education.setFieldOfStudy(request.getFieldOfStudy());
+        education.setGrade(request.getGrade());
+        education.setStartDate(request.getStartDate());
+        education.setEndDate(request.getEndDate());
+        education.setIsCurrentlyStudying(Boolean.TRUE.equals(request.getIsCurrentlyStudying()));
+        education.setDescription(request.getDescription());
+        education.setDisplayOrder(request.getDisplayOrder() != null ? request.getDisplayOrder() : 0);
+
+        return EducationMapper.toEducationResponse(educationRepo.save(education));
     }
 
     @Override
-    public void deleteEducation(Long educationId, Long resumeId, Long candidateId) {
+    public void deleteEducation(Long educationId, Long resumeId, Long candidateId) throws Exception {
+        Education education = getEducationEntity(educationId);
+
+        assertOwner(education.getResume(), candidateId);
+
+        educationRepo.delete(education);
 
     }
 
